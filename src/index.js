@@ -7,11 +7,11 @@ import Router from './Component/Router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <ContextApi>
       <Router/>
-    </ContextApi>
-  </React.StrictMode>,
+    </ContextApi>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 
