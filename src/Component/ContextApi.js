@@ -8,6 +8,9 @@ function ContextApi({ children }) {
 
     const [state, dispatch] = useReducer(Reducer)
     const apiKey = process.env.REACT_APP_API_KEY
+  
+    const today = new Date().toISOString().split("T")[0]
+    const tomorrow = new Date(new Date().setDate(new Date().getDate()+1)).toISOString().split("T")[0]
 
     const options = {
         method: 'GET',
@@ -17,18 +20,17 @@ function ContextApi({ children }) {
             pageNumber: '1',
             destinationId: '169712',
             pageSize: '25',
-            checkOut: '2021-06-25',
-            checkIn: '2021-06-24',
+            checkOut: tomorrow,
+            checkIn: today,
             sortOrder: 'BEST_SELLER',
             locale: 'en_US',
-            currency:'CAD'
+            currency: 'CAD'
         },
         headers: {
             'x-rapidapi-key': apiKey,
             'x-rapidapi-host': 'hotels4.p.rapidapi.com'
         }
     };
-
 
 
     useEffect(() => {
@@ -51,7 +53,7 @@ function ContextApi({ children }) {
             <ContextProvider.Provider value={{ state, dispatch }}>
                 {children}
             </ContextProvider.Provider>
-            {/* )} */}
+
         </>
     )
 }
