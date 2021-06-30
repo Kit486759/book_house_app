@@ -10,7 +10,7 @@ export default function Router() {
             <Wrapper>
                 <Switch>
                     <Route path="/" component={App} exact={true}/>
-                    <Route path="/detail/" component={Detail}/>
+                    <Route path="/detail/:id" component={Detail}/>
                 </Switch>
             </Wrapper>
         </BrowserRouter>

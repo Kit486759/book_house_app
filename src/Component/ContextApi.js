@@ -23,7 +23,7 @@ function ContextApi({ children }) {
             checkOut: tomorrow,
             checkIn: today,
             sortOrder: 'BEST_SELLER',
-            locale: 'en_US',
+            locale: 'en_CA',
             currency: 'CAD'
         },
         headers: {
@@ -31,6 +31,23 @@ function ContextApi({ children }) {
             'x-rapidapi-host': 'hotels4.p.rapidapi.com'
         }
     };
+
+    const optionDetail = {
+        method: 'GET',
+        url: 'https://hotels4.p.rapidapi.com/properties/get-details',
+        params: {
+          id: '141253',
+          checkIn: tomorrow,
+          checkOut: today,
+          currency: 'USD',
+          locale: 'CAD',
+          adults1: '1'
+        },
+        headers: {
+          'x-rapidapi-key': apiKey,
+          'x-rapidapi-host': 'hotels4.p.rapidapi.com'
+        }
+      };
 
 
     useEffect(() => {
@@ -50,10 +67,10 @@ function ContextApi({ children }) {
     return (
         <>
             {/* {state && ( */}
-            <ContextProvider.Provider value={{ state, dispatch }}>
+            <ContextProvider.Provider value={{ state, dispatch, today,tomorrow }}>
                 {children}
             </ContextProvider.Provider>
-
+            {/* )} */}
         </>
     )
 }
