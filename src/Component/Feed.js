@@ -19,6 +19,7 @@ export default function Feed() {
         return a.ratePlan.price.exactCurrent - b.ratePlan.price.exactCurrent
     })).slice(0, 5)
 
+    console.log(sortByPrice)
 
     const sortByRating = ([...state].sort((a, b) => {
         return parseFloat(b.guestReviews.unformattedRating) - parseFloat(a.guestReviews.unformattedRating)
@@ -31,11 +32,11 @@ export default function Feed() {
             <CarouselSlide data={sortByBestSeller} />
             <Container fluid className=" justify-content-center" >
                 <h1 className="display-4 mt-5 text-center container-fluid">Best Price</h1>
-                <Slide data={sortByRating} />
+                <Slide data={sortByPrice} />
             </Container>
             <Container fluid className=" justify-content-center" >
                 <h1 className="display-4 mt-5 text-center container-fluid">Best Rating</h1>
-                <Slide data={sortByPrice} />
+                <Slide data={sortByRating} />
             </Container>
         </>
     )
