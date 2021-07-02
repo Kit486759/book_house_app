@@ -10,9 +10,9 @@ import Slide from './Slide';
 export default function Feed() {
     const { state } = useContext(ContextProvider)
     console.log(state)
-
     // Slice the array to 5 top best seller and pass to carousel slide
     const sortByBestSeller = [...state].slice(0, 5)
+    console.log(sortByBestSeller)
 
     // Use sort method to sort the array by object rating value than pass to best rating slide
     const sortByPrice = ([...state].sort((a, b) => {
@@ -24,20 +24,19 @@ export default function Feed() {
     const sortByRating = ([...state].sort((a, b) => {
         return parseFloat(b.guestReviews.unformattedRating) - parseFloat(a.guestReviews.unformattedRating)
     })).slice(0, 5)
-    
+
 
     return (
         <>
-            {/* {sortByBestSeller && ( */}
             <h1 className="display-4 text-center container-fluid">Best Seller</h1>
             <CarouselSlide data={sortByBestSeller} />
             <Container fluid className=" justify-content-center" >
                 <h1 className="display-4 mt-5 text-center container-fluid">Best Price</h1>
-                <Slide data={sortByRating} />
+                <Slide data={sortByPrice} />
             </Container>
             <Container fluid className=" justify-content-center" >
                 <h1 className="display-4 mt-5 text-center container-fluid">Best Rating</h1>
-                <Slide data={sortByPrice} />
+                <Slide data={sortByRating} />
             </Container>
         </>
     )

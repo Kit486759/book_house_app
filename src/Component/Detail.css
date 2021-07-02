@@ -15,13 +15,30 @@
     margin: 25px;
   }
   .img-showcase img{
-    max-height: 400px;
+    max-height: 500px;
     display: block;
     object-fit: cover;
     border-radius: 10px;
     border: 1px solid #6B9080;
   }
-  
+
+  .img-detail h3 {
+    margin: 0 1.5rem;
+  }
+
+    .img-detail ul li{
+        margin: 0;
+        list-style: none;
+        background-size: 18px;
+        padding-left: 1.6rem;
+        margin: 0.3rem 0;
+        font-weight: 600;
+        opacity: 0.9;
+    }
+    .img-detail ul li span{
+        font-weight: 400;
+    }
+    
   .card-wrapper .house-content{
     max-width: 500px;
     min-width: 290px;
@@ -87,9 +104,33 @@
     margin: 1.5rem 0;
 }
 
+.rental-info {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #CCE3DE;
+    padding: 1rem;
+    border: 1.5px solid #A4C3B2;
+    border-radius: 25px;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.rental-info h3 {
+    text-align: center;
+    width: 100%;
+}
+
+.rental-info label {
+    margin-right: 10px;
+    font-weight: bolder;
+}
+
 .rental-info input,
 .rental-info .btn{
     font-size: large;
+    font-weight: bolder;
     border: 1.5px solid #A4C3B2;
     border-radius: 25px;
     text-align: center;
@@ -98,12 +139,14 @@
     margin-right: 0.3rem;
     margin-bottom: 1rem;
 }
-.rental-info input{
-    width: 70px;
+.rental-info .dates{
+    width: 70%;
 }
+
 .rental-info .btn{
     cursor: pointer;
     color: white;
+    width: 100%;
 }
 .rental-info .btn{
     background: #6B9080;
