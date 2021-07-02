@@ -139,7 +139,7 @@ export default function Detail(props) {
 
 
               <div className="rental-info">
-                <h3>Availability</h3>
+                <h2>Availability</h2>
                 
                 <div>
                   <label>Check-in Date: </label>

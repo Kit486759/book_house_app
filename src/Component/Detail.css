@@ -8,6 +8,18 @@
     justify-content: center;
     flex-wrap: wrap;
   }
+
+  .card-wrapper h2{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .card-wrapper .house-imgs {
+    max-width: 500px;
+    min-width: 290px;
+    margin: 25px;
+  }
+
   .img-showcase{
     max-width: 600px;
     min-width: 290px;
@@ -43,11 +55,6 @@
     max-width: 500px;
     min-width: 290px;
     margin: 25px;
-  }
-  
-  .house-content h2{
-    text-transform: uppercase;
-    letter-spacing: 2px;
   }
 
   .house-price {    
@@ -152,15 +159,3 @@
     background: #6B9080;
 }
 
-
-@media screen and (min-width: 992px){
-    .card-wrapper{
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .house-content{
-        padding-top: 0;
-    }
-}
