@@ -6,6 +6,7 @@ import axios from 'axios';
 import { ContextProvider } from './ContextApi';
 import { Spinner } from 'react-bootstrap';
 import { map } from 'bluebird';
+
 import DatePicker from './DatePicker';
 
 export default function Detail(props) {
@@ -87,6 +88,7 @@ export default function Detail(props) {
 
           <div className="card-wrapper">
 
+
             <div className="house-imgs">
 
               <div className="img-showcase">
@@ -161,11 +163,14 @@ export default function Detail(props) {
                 
 
                 <button type="button" className="btn">Check availability</button>
+
               </div>
 
             </div>
 
           </div>
+
+
         </div>
 
       }
