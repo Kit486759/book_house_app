@@ -1,6 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import photo from './assets/house.jfif';
 import './Detail.css';
 import axios from 'axios';
 import { ContextProvider } from './ContextApi';
@@ -112,7 +111,7 @@ export default function Detail(props) {
 
                 <div className="house-price">
                   <p className="price">Price: <span>
-                    {detail.propertyDescription.featuredPrice.currentPrice.plain * qty}
+                    ${detail.propertyDescription.featuredPrice.currentPrice.plain * qty}
                   </span></p>
                 </div>
               </div>
@@ -160,7 +159,7 @@ export default function Detail(props) {
                 </div>
                 
 
-                <button type="button" className="btn">Check availability</button>
+                <Link to={"/booking"} type="button" className="btn">Check availability</Link>
               </div>
 
             </div>
