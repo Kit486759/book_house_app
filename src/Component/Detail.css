@@ -114,7 +114,6 @@
 .rental-info {
     display: flex;
     flex-wrap: wrap;
-    background-color: #CCE3DE;
     padding: 1rem;
     border: 1.5px solid #A4C3B2;
     border-radius: 25px;
@@ -134,7 +133,7 @@
     font-weight: bolder;
 }
 
-.rental-info input,
+.rental-info .qty,
 .rental-info .btn{
     font-size: large;
     font-weight: bolder;
@@ -146,8 +145,10 @@
     margin-right: 0.3rem;
     margin-bottom: 1rem;
 }
-.rental-info .dates{
-    width: 70%;
+.rental-info input{
+    font-size: large;
+    font-weight: bolder;
+    margin: 1rem 0;
 }
 
 .rental-info .btn{

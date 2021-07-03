@@ -6,6 +6,7 @@ import axios from 'axios';
 import { ContextProvider } from './ContextApi';
 import { Spinner } from 'react-bootstrap';
 import { map } from 'bluebird';
+import DatePicker from './DatePicker';
 
 export default function Detail(props) {
 
@@ -141,14 +142,16 @@ export default function Detail(props) {
               <div className="rental-info">
                 <h2>Availability</h2>
                 
-                <div>
+                {/* <div>
                   <label>Check-in Date: </label>
-                  <input className="dates" type="date" placeholder="Check-in date"></input>
+                  <input className="dates" type="date"></input>
                 </div>
                 <div>
                   <label>Check-out Date: </label> 
-                  <input className="dates" type="date" placeholder="Check-out date"></input>
-                </div>
+                  <input className="dates" type="date"></input>
+                </div> */}
+
+                <DatePicker />
                 
                 <div>
                   {/* Price x qty */}
