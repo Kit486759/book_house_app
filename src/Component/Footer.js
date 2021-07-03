@@ -19,7 +19,10 @@ export default function Footer() {
                 <Col >Gui Gianjope</Col>
                 <Col ></Col>
             </Row>
-            <Row>
+            <Row style={{
+                justifyContent: 'center',
+                textAlign: 'center',
+            }}>
             <p>Copyright 2021 by Kit So | Gui Gianjope. All Rights Reserved.</p>
             </Row>
         </Container>

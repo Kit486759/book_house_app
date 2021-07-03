@@ -7,6 +7,8 @@ import { ContextProvider } from './ContextApi';
 import { Spinner } from 'react-bootstrap';
 import { map } from 'bluebird';
 
+import DatePicker from './DatePicker';
+
 export default function Detail(props) {
 
   // Reuse the days parameter for fetching
@@ -86,10 +88,21 @@ export default function Detail(props) {
 
           <div className="card-wrapper">
 
+
             <div className="house-imgs">
 
               <div className="img-showcase">
                 <img src={img} alt="" />
+              </div>
+
+              <div className="img-detail">
+                {/* What is around */}
+                <h3>{detail.overview.overviewSections[1].title}</h3>
+                <ul>
+                  {detail.overview.overviewSections[1].content.map((info, index) => {
+                    return <li key={index}><span>{info}</span></li>
+                  })}
+                </ul>
               </div>
 
             </div>
@@ -118,13 +131,7 @@ export default function Detail(props) {
                   })}
                 </ul>
 
-                {/* What is around */}
-                <h3>{detail.overview.overviewSections[1].title}</h3>
-                <ul>
-                  {detail.overview.overviewSections[1].content.map((info, index) => {
-                    return <li key={index}><span>{info}</span></li>
-                  })}
-                </ul>
+                
 
                 {/* Address */}
                 <h3>Address</h3>
@@ -135,17 +142,35 @@ export default function Detail(props) {
 
 
               <div className="rental-info">
-                <label>Guests:</label>
+                <h2>Availability</h2>
+                
+                {/* <div>
+                  <label>Check-in Date: </label>
+                  <input className="dates" type="date"></input>
+                </div>
+                <div>
+                  <label>Check-out Date: </label> 
+                  <input className="dates" type="date"></input>
+                </div> */}
 
-                {/* Price x qty */}
-                <input type="number" min="1" max="10" onChange={(e) => setQty(e.target.value)}></input>
-                <button type="button" className="btn">Availability</button>
+                <DatePicker />
+                
+                <div>
+                  {/* Price x qty */}
+                  <label>Guests: </label>                
+                  <input className="qty" type="number" min="1" max="10" placeholder="1" onChange={(e) => setQty(e.target.value)}></input>
+                </div>
+                
+
+                <button type="button" className="btn">Check availability</button>
+
               </div>
 
             </div>
 
           </div>
-          <Link to={"/"}><button>Go to Home</button></Link>
+
+
         </div>
 
       }
