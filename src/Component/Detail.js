@@ -159,14 +159,7 @@ export default function Detail(props) {
                   <label>Guests: </label>                
                   <input className="qty" type="number" min="1" max="10" placeholder="1" onChange={(e) => setQty(e.target.value)}></input>
                 </div>
-                
-
-<<<<<<< HEAD
                 <Link to={"/booking"} type="button" className="btn">Check availability</Link>
-=======
-                <button type="button" className="btn">Check availability</button>
-
->>>>>>> 75a47beed187b4a3aa3bb5b6c6c52e8dde48cd30
               </div>
 
             </div>
