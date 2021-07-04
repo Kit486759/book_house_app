@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom';
 import { ContextProvider } from './ContextApi';
-import { Card, Button, Container, Row, Col } from 'react-bootstrap';
+import { Container} from 'react-bootstrap';
 import CarouselSlide from './CarouselSlide';
 import Slide from './Slide';
 

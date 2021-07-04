@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Header from './Header';
 import Footer from './Footer';
 import { ContextProvider } from './ContextApi';
-import { Spinner, Container } from 'react-bootstrap';
+import { Spinner } from 'react-bootstrap';
 
 export default function Wrapper({ children }) {
     const { state } = useContext(ContextProvider)

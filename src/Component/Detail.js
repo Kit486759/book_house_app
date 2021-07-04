@@ -1,10 +1,8 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
 import './Detail.css';
 import axios from 'axios';
 import { ContextProvider } from './ContextApi';
 import { Spinner } from 'react-bootstrap';
-import { map } from 'bluebird';
 
 import DatePicker from './DatePicker';
 
@@ -15,7 +13,7 @@ export default function Detail(props) {
 
   const [detail, setDetail] = useState()
   const [img, setImg] = useState()
-  const [qty, setQty] = useState(1)
+  // const [qty, setQty] = useState(1)
 
   // Get the house id from React router url syntax
   const houseId = props.match.params.id
@@ -49,15 +47,14 @@ export default function Detail(props) {
     }
   };
 
+  
   useEffect(() => {
 
-    axios.all([axios.request(fetchInfo),axios.request(fetchImg)])
+    axios.all([axios.request(fetchInfo), axios.request(fetchImg)])
       .then(axios.spread((info, img) => {
         setDetail(info.data.data.body)
-        setImg(img.data.hotelImages[0].baseUrl.replace("{size}","b"))
+        setImg(img.data.hotelImages[0].baseUrl.replace("{size}", "b"))
 
-        // console.log(info)
-        // console.log(img)
       }))
       .catch(function (error) {
         console.error(error);
@@ -65,11 +62,10 @@ export default function Detail(props) {
 
   }, [])
 
-  // console.log(img)
 
   return (
     <>
-{!detail && !img ?
+      {!detail && !img ?
         <div style={{
           position: "absolute", top: "50%", left: "50%", transform: 'translate(-50%,-50%)',
         }}>
@@ -113,7 +109,7 @@ export default function Detail(props) {
 
                 <div className="house-price">
                   <p className="price">Price: <span>
-                    ${detail.propertyDescription.featuredPrice.currentPrice.plain * qty}
+                    ${detail.propertyDescription.featuredPrice.currentPrice.plain}
                   </span></p>
                 </div>
               </div>
@@ -130,7 +126,7 @@ export default function Detail(props) {
                   })}
                 </ul>
 
-                
+
 
                 {/* Address */}
                 <h3>Address</h3>
@@ -141,17 +137,15 @@ export default function Detail(props) {
 
 
               <div className="rental-info">
-                <h2>Availability</h2>
+                <h2>Booking</h2>
 
 
-                <DatePicker />
-                
-                <div>
-                  {/* Price x qty */}
-                  <label>Guests: </label>                
-                  <input className="qty" type="number" min="1" max="10" placeholder="1" onChange={(e) => setQty(e.target.value)}></input>
-                </div>
-                <Link to={"/booking"} type="button" className="btn">Check availability</Link>
+                <DatePicker price={detail.propertyDescription.featuredPrice.currentPrice.plain}
+                  data={detail}
+                />
+
+
+
               </div>
 
             </div>
@@ -162,10 +156,9 @@ export default function Detail(props) {
         </div>
 
       }
-   
+
     </>
 
   )
 }
 
-   
