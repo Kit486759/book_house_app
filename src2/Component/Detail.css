@@ -1,0 +1,162 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  .card-wrapper{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .card-wrapper h2{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .card-wrapper .house-imgs {
+    max-width: 500px;
+    min-width: 290px;
+    margin: 25px;
+  }
+
+  .img-showcase{
+    max-width: 600px;
+    min-width: 290px;
+    overflow: hidden;
+    margin: 25px;
+  }
+  .img-showcase img{
+    max-height: 500px;
+    display: block;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #6B9080;
+  }
+
+  .img-detail h3 {
+    margin: 0 1.5rem;
+  }
+
+    .img-detail ul li{
+        margin: 0;
+        list-style: none;
+        background-size: 18px;
+        padding-left: 1.6rem;
+        margin: 0.3rem 0;
+        font-weight: 600;
+        opacity: 0.9;
+    }
+    .img-detail ul li span{
+        font-weight: 400;
+    }
+    
+  .card-wrapper .house-content{
+    max-width: 500px;
+    min-width: 290px;
+    margin: 25px;
+  }
+
+  .house-price {    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .house-title{
+    font-size: 2.7rem;
+    text-transform: capitalize;
+    font-weight: 600;
+    position: relative;
+    color: #6B9080;
+}
+.house-title::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 80px;
+    background: #6B9080;
+}
+
+.house-price{
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.price span{
+    font-weight: bolder;
+    color: #6B9080;
+}
+
+.house-detail h2{
+    color: #6B9080;
+}
+
+.house-detail ul li{
+    margin: 0;
+    list-style: none;
+    background: url(./assets/checked1.png) left center no-repeat;
+    background-size: 18px;
+    padding-left: 1.6rem;
+    margin: 0.3rem 0;
+    font-weight: 600;
+    opacity: 0.9;
+}
+.house-detail ul li span{
+    font-weight: 400;
+}
+.purchase-info{
+    margin: 1.5rem 0;
+}
+
+.rental-info {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    border: 1.5px solid #A4C3B2;
+    border-radius: 25px;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.rental-info h3 {
+    text-align: center;
+    width: 100%;
+}
+
+.rental-info label {
+    margin-right: 10px;
+    font-weight: bolder;
+}
+
+.rental-info .qty,
+.rental-info .btn{
+    font-size: large;
+    font-weight: bolder;
+    border: 1.5px solid #A4C3B2;
+    border-radius: 25px;
+    text-align: center;
+    padding: 0.55rem 1rem;
+    outline: 0;
+    margin-right: 0.3rem;
+    margin-bottom: 1rem;
+}
+.rental-info input{
+    font-size: large;
+    font-weight: bolder;
+    margin: 1rem 0;
+}
+
+.rental-info .btn{
+    cursor: pointer;
+    color: white;
+    width: 100%;
+}
+.rental-info .btn{
+    background: #6B9080;
+}
+

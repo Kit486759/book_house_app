@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useReducer, useContext, useState } from 'react';
+import React, { createContext, useEffect, useReducer, useContext } from 'react';
 import axios from 'axios';
 import Reducer from './Reducer';
 
@@ -8,12 +8,9 @@ function ContextApi({ children }) {
 
     const [state, dispatch] = useReducer(Reducer)
     const apiKey = process.env.REACT_APP_API_KEY
-
-    const [day, setDay] = useState(0)
-
+  
     const today = new Date().toISOString().split("T")[0]
-    const tomorrow = new Date(new Date().setDate(new Date().getDate() + 1)).toISOString().split("T")[0]
-
+    const tomorrow = new Date(new Date().setDate(new Date().getDate()+1)).toISOString().split("T")[0]
 
     const options = {
         method: 'GET',
@@ -39,18 +36,18 @@ function ContextApi({ children }) {
         method: 'GET',
         url: 'https://hotels4.p.rapidapi.com/properties/get-details',
         params: {
-            id: '141253',
-            checkIn: tomorrow,
-            checkOut: today,
-            currency: 'USD',
-            locale: 'CAD',
-            adults1: '1'
+          id: '141253',
+          checkIn: tomorrow,
+          checkOut: today,
+          currency: 'USD',
+          locale: 'CAD',
+          adults1: '1'
         },
         headers: {
-            'x-rapidapi-key': apiKey,
-            'x-rapidapi-host': 'hotels4.p.rapidapi.com'
+          'x-rapidapi-key': apiKey,
+          'x-rapidapi-host': 'hotels4.p.rapidapi.com'
         }
-    };
+      };
 
 
     useEffect(() => {
@@ -65,12 +62,12 @@ function ContextApi({ children }) {
 
     }, [])
 
-console.log(day)
+
 
     return (
         <>
             {/* {state && ( */}
-            <ContextProvider.Provider value={{ state, dispatch, today, tomorrow, setDay}}>
+            <ContextProvider.Provider value={{ state, dispatch, today,tomorrow }}>
                 {children}
             </ContextProvider.Provider>
             {/* )} */}
