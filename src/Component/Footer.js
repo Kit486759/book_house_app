@@ -7,6 +7,7 @@ export default function Footer() {
             height: "200px",
             backgroundColor: "#A4C3B2",
             marginTop: "50px",
+            
             // display:"flex"
         }}>
            
