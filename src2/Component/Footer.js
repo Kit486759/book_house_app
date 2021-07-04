@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
+import './Footer.css';
 
 export default function Footer() {
     return (
@@ -8,7 +9,6 @@ export default function Footer() {
             height: "200px",
             backgroundColor: "#A4C3B2",
             marginTop: "50px",
-            
             // display:"flex"
         }}>
            
