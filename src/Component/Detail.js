@@ -66,7 +66,7 @@ export default function Detail(props) {
 
   }, [])
 
-  console.log(img)
+  // console.log(img)
 
   return (
     <>

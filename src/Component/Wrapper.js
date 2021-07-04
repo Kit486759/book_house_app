@@ -23,7 +23,7 @@ export default function Wrapper({ children }) {
                 :
                 <>
                     <div className="mainDiv"
-                    style={{minHeight:'calc(100vh - 300px)', boxSizing:'border-box'
+                    style={{minHeight:'calc(100vh - 400px)', boxSizing:'border-box'
                     }}>
                         {children}
                     </div>
