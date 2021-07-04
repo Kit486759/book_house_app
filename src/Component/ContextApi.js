@@ -14,9 +14,6 @@ function ContextApi({ children }) {
     const today = new Date().toISOString().split("T")[0]
     const tomorrow = new Date(new Date().setDate(new Date().getDate() + 1)).toISOString().split("T")[0]
 
-    const test = () => {
-        console.log(`test`)
-    }
 
     const options = {
         method: 'GET',
@@ -68,12 +65,12 @@ function ContextApi({ children }) {
 
     }, [])
 
-console.log(`Context api day${day}`)
+console.log(day)
 
     return (
         <>
             {/* {state && ( */}
-            <ContextProvider.Provider value={{ state, dispatch, today, tomorrow, setDay ,test}}>
+            <ContextProvider.Provider value={{ state, dispatch, today, tomorrow, setDay}}>
                 {children}
             </ContextProvider.Provider>
             {/* )} */}

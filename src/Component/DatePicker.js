@@ -1,4 +1,4 @@
-import React, { Component,useContext } from 'react';
+import React, { Component, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
@@ -15,33 +15,27 @@ class DatePicker extends Component {
         super(props);
         this.state = {
             startDate: null,
-            endDate: null,
-            days: 0
+            endDate: null
         }
     }
 
     check = () => {
 
-        this.context.setDay(this.state.endDate.diff(this.state.startDate) / 1000 / 60 / 60 / 24)
 
-        if(this.state.startDate !== null || this.state.endDate !== null){
-        this.setState({
-            days: this.state.endDate.diff(this.state.startDate) / 1000 / 60 / 60 / 24
-        })
 
-        }else{
+        if (this.state.startDate !== null || this.state.endDate !== null) {
+            this.context.setDay(this.state.endDate.diff(this.state.startDate) / 1000 / 60 / 60 / 24)
+
+        } else {
             alert(`Please select the day`)
         }
 
-        
+
     }
 
 
     render() {
 
-
-        console.log(this.state.days)
-        console.log(this.state.startDate)
         return (
             <div>
                 <div className="test good">test</div>
