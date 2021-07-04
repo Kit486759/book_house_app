@@ -143,15 +143,7 @@ export default function Detail(props) {
 
               <div className="rental-info">
                 <h2>Availability</h2>
-                
-                {/* <div>
-                  <label>Check-in Date: </label>
-                  <input className="dates" type="date"></input>
-                </div>
-                <div>
-                  <label>Check-out Date: </label> 
-                  <input className="dates" type="date"></input>
-                </div> */}
+
 
                 <DatePicker />
                 
