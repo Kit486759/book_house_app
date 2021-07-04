@@ -24,7 +24,7 @@ export default function Booking() {
                 <div className="rigth-side">
                     <div>
                         <h3>House title</h3>
-                        <h4>Description</h4>
+                        <h4>Description:</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin cursus, ligula vitae ullamcorper eleifend, metus ligula varius erat, ut tempor dolor tortor sit amet nibh.</p>
                     </div>
                     <div className="pay-detail">
