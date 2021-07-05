@@ -3,8 +3,8 @@
 <br/>
 
 <p align="center">
-  <img src="/rentalGif.gif" alt="demoGif" height=500 />
-  <img src="/rentalGif2.gif" alt="demoGif" height=500 />
+  <img src="/rentalGif.gif" alt="demoGif" width=450 />
+  <img src="/rentalGif2.gif" alt="demoGif" width=450  />
 </p>
 
 # Author
