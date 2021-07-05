@@ -7,7 +7,7 @@ export default function CarouselSlide(props) {
     return (
         <>
 
-            <Carousel className="d-block w-50 container-fluid">
+            <Carousel className="d-block w-50 container-fluid" slide={false} fade={false}>
                 {props.data.map((data, index) => {
                     return (
                         

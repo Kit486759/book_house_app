@@ -2,53 +2,55 @@ import React, { useEffect, useContext, useState } from 'react';
 import './Detail.css';
 import axios from 'axios';
 import { ContextProvider } from './ContextApi';
-import { Spinner } from 'react-bootstrap';
-
+import { Spinner,Button } from 'react-bootstrap';
 import DatePicker from './DatePicker';
+
 
 export default function Detail(props) {
 
-  // Reuse the days parameter for fetching
-  const { today, tomorrow } = useContext(ContextProvider)
+ 
+  const { today, tomorrow,setBookmark } = useContext(ContextProvider)
 
   const [detail, setDetail] = useState()
   const [img, setImg] = useState()
-  // const [qty, setQty] = useState(1)
+ 
 
   // Get the house id from React router url syntax
   const houseId = props.match.params.id
 
-  const apiKey = process.env.REACT_APP_API_KEY
-  // Fetch setting
-  const fetchInfo = {
-    method: 'GET',
-    url: 'https://hotels4.p.rapidapi.com/properties/get-details',
-    params: {
-      id: houseId,
-      checkIn: today,
-      checkOut: tomorrow,
-      currency: 'CAD',
-      locale: 'en_CA',
-      adults1: '1'
-    },
-    headers: {
-      'x-rapidapi-key': apiKey,
-      'x-rapidapi-host': 'hotels4.p.rapidapi.com'
-    }
-  };
-
-  const fetchImg = {
-    method: 'GET',
-    url: 'https://hotels4.p.rapidapi.com/properties/get-hotel-photos',
-    params: { id: houseId },
-    headers: {
-      'x-rapidapi-key': apiKey,
-      'x-rapidapi-host': 'hotels4.p.rapidapi.com'
-    }
-  };
-
   
+
+
   useEffect(() => {
+
+// Fetch parameter as object
+
+    const fetchInfo = {
+      method: 'GET',
+      url: 'https://hotels4.p.rapidapi.com/properties/get-details',
+      params: {
+        id: houseId,
+        checkIn: today,
+        checkOut: tomorrow,
+        currency: 'CAD',
+        locale: 'en_CA',
+        adults1: '1'
+      },
+      headers: {
+        'x-rapidapi-key': process.env.REACT_APP_API_KEY,
+        'x-rapidapi-host': 'hotels4.p.rapidapi.com'
+      }
+    };
+
+    const fetchImg = {
+      method: 'GET',
+      url: 'https://hotels4.p.rapidapi.com/properties/get-hotel-photos',
+      params: { id: houseId },
+      headers: {
+        'x-rapidapi-key': process.env.REACT_APP_API_KEY,
+        'x-rapidapi-host': 'hotels4.p.rapidapi.com'
+      }
+    };
 
     axios.all([axios.request(fetchInfo), axios.request(fetchImg)])
       .then(axios.spread((info, img) => {
@@ -60,9 +62,9 @@ export default function Detail(props) {
         console.error(error);
       });
 
-  }, [])
+  }, [houseId,today,tomorrow])
 
-
+console.log(detail)
   return (
     <>
       {!detail && !img ?
@@ -109,10 +111,12 @@ export default function Detail(props) {
 
                 <div className="house-price">
                   <p className="price">Price: <span>
-                    ${detail.propertyDescription.featuredPrice.currentPrice.plain}
+                    ${detail.propertyDescription.featuredPrice.currentPrice.plain} /per night
                   </span></p>
                 </div>
               </div>
+
+              <Button variant="red" onClick={()=>setBookmark(detail.pdpHeader.hotelId, detail.propertyDescription.name, img, detail.propertyDescription.featuredPrice.currentPrice.formatted )}>Bookmark</Button>
 
               <div className="house-detail">
                 <h2>Description:</h2>
