@@ -47,6 +47,7 @@ export default function Header() {
                             className="mr-2"
                             id="searchInput"
                             aria-label="Search"
+                            autoComplete="off"
                             onChange={(e) => setSearch(e.target.value)}
                         />
                         <Link to={{ pathname: "/search/" + search, state: search }} onClick={() => clearSearchBox()}>

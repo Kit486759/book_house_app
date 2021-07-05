@@ -68,6 +68,7 @@ console.log(detail)
   return (
     <>
       {!detail && !img ?
+      <div style={{height: "400px"}}>
         <div style={{
           position: "absolute", top: "50%", left: "50%", transform: 'translate(-50%,-50%)',
         }}>
@@ -78,7 +79,7 @@ console.log(detail)
           <Spinner animation="border" variant="warning" />
           <Spinner animation="border" variant="info" />
           <Spinner animation="border" variant="dark" />
-        </div>
+        </div></div>
         :
 
         <div className="app">
