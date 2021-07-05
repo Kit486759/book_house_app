@@ -1,75 +1,73 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
 import './Detail.css';
 import axios from 'axios';
 import { ContextProvider } from './ContextApi';
-import { Spinner } from 'react-bootstrap';
-import { map } from 'bluebird';
-
+import { Spinner,Button } from 'react-bootstrap';
 import DatePicker from './DatePicker';
+
 
 export default function Detail(props) {
 
-  // Reuse the days parameter for fetching
-  const { today, tomorrow } = useContext(ContextProvider)
+ 
+  const { today, tomorrow,setBookmark } = useContext(ContextProvider)
 
   const [detail, setDetail] = useState()
   const [img, setImg] = useState()
-  const [qty, setQty] = useState(1)
+ 
 
   // Get the house id from React router url syntax
   const houseId = props.match.params.id
 
-  const apiKey = process.env.REACT_APP_API_KEY
-  // Fetch setting
-  const fetchInfo = {
-    method: 'GET',
-    url: 'https://hotels4.p.rapidapi.com/properties/get-details',
-    params: {
-      id: houseId,
-      checkIn: today,
-      checkOut: tomorrow,
-      currency: 'CAD',
-      locale: 'en_CA',
-      adults1: '1'
-    },
-    headers: {
-      'x-rapidapi-key': apiKey,
-      'x-rapidapi-host': 'hotels4.p.rapidapi.com'
-    }
-  };
+  
 
-  const fetchImg = {
-    method: 'GET',
-    url: 'https://hotels4.p.rapidapi.com/properties/get-hotel-photos',
-    params: { id: houseId },
-    headers: {
-      'x-rapidapi-key': apiKey,
-      'x-rapidapi-host': 'hotels4.p.rapidapi.com'
-    }
-  };
 
   useEffect(() => {
 
-    axios.all([axios.request(fetchInfo),axios.request(fetchImg)])
+// Fetch parameter as object
+
+    const fetchInfo = {
+      method: 'GET',
+      url: 'https://hotels4.p.rapidapi.com/properties/get-details',
+      params: {
+        id: houseId,
+        checkIn: today,
+        checkOut: tomorrow,
+        currency: 'CAD',
+        locale: 'en_CA',
+        adults1: '1'
+      },
+      headers: {
+        'x-rapidapi-key': process.env.REACT_APP_API_KEY,
+        'x-rapidapi-host': 'hotels4.p.rapidapi.com'
+      }
+    };
+
+    const fetchImg = {
+      method: 'GET',
+      url: 'https://hotels4.p.rapidapi.com/properties/get-hotel-photos',
+      params: { id: houseId },
+      headers: {
+        'x-rapidapi-key': process.env.REACT_APP_API_KEY,
+        'x-rapidapi-host': 'hotels4.p.rapidapi.com'
+      }
+    };
+
+    axios.all([axios.request(fetchInfo), axios.request(fetchImg)])
       .then(axios.spread((info, img) => {
         setDetail(info.data.data.body)
-        setImg(img.data.hotelImages[0].baseUrl.replace("{size}","b"))
+        setImg(img.data.hotelImages[0].baseUrl.replace("{size}", "b"))
 
-        // console.log(info)
-        // console.log(img)
       }))
       .catch(function (error) {
         console.error(error);
       });
 
-  }, [])
+  }, [houseId,today,tomorrow])
 
-  // console.log(img)
-
+console.log(detail)
   return (
     <>
-{!detail && !img ?
+      {!detail && !img ?
         <div style={{
           position: "absolute", top: "50%", left: "50%", transform: 'translate(-50%,-50%)',
         }}>
@@ -113,10 +111,12 @@ export default function Detail(props) {
 
                 <div className="house-price">
                   <p className="price">Price: <span>
-                    ${detail.propertyDescription.featuredPrice.currentPrice.plain * qty}
+                    ${detail.propertyDescription.featuredPrice.currentPrice.plain} /per night
                   </span></p>
                 </div>
               </div>
+
+              <Button variant="red" onClick={()=>setBookmark(detail.pdpHeader.hotelId, detail.propertyDescription.name, img, detail.propertyDescription.featuredPrice.currentPrice.formatted )}>Bookmark</Button>
 
               <div className="house-detail">
                 <h2>Description:</h2>
@@ -130,7 +130,7 @@ export default function Detail(props) {
                   })}
                 </ul>
 
-                
+
 
                 {/* Address */}
                 <h3>Address</h3>
@@ -141,17 +141,15 @@ export default function Detail(props) {
 
 
               <div className="rental-info">
-                <h2>Availability</h2>
+                <h2>Booking</h2>
 
 
-                <DatePicker />
-                
-                <div>
-                  {/* Price x qty */}
-                  <label>Guests: </label>                
-                  <input className="qty" type="number" min="1" max="10" placeholder="1" onChange={(e) => setQty(e.target.value)}></input>
-                </div>
-                <Link to={"/booking"} type="button" className="btn">Check availability</Link>
+                <DatePicker price={detail.propertyDescription.featuredPrice.currentPrice.plain}
+                  data={detail}
+                />
+
+
+
               </div>
 
             </div>
@@ -162,10 +160,9 @@ export default function Detail(props) {
         </div>
 
       }
-   
+
     </>
 
   )
 }
 
-   

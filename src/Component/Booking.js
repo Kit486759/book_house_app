@@ -1,7 +1,10 @@
 import React from 'react'
 import './Booking.css';
 
-export default function Booking() {
+export default function Booking(props) {
+const {data,days,qty,price,start,end} = props.location.state
+console.log(start)
+console.log(end)
     return (
         <>
         
@@ -10,9 +13,9 @@ export default function Booking() {
                 <div className="left-side">
                     <div className="trip-detail">
                         <h3>Trip</h3>
-                        <h5>Check-in date: 23/23/2323</h5>
-                        <h5>checkOut date: 24/24/2424</h5>
-                        <h5>Guest(s): 4</h5>
+                        <h5>Check-in date: {start}</h5>
+                        <h5>checkOut date: {end}</h5>
+                        <h5>Guest(s): {qty}</h5>
                     </div>
 
                     <div className="cancel-detail">
@@ -23,16 +26,17 @@ export default function Booking() {
 
                 <div className="rigth-side">
                     <div>
-                        <h3>House title</h3>
+                        <h3>{data.propertyDescription.name}</h3>
                         <h4>Description:</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin cursus, ligula vitae ullamcorper eleifend, metus ligula varius erat, ut tempor dolor tortor sit amet nibh.</p>
+                        <p>{data.propertyDescription.tagline[0].slice(3, -4)}</p>
+                        <p>{data.propertyDescription.address.fullAddress}</p>
                     </div>
                     <div className="pay-detail">
                         <h3>Price details</h3>
-                        <h5>Rent: $200.00</h5>
-                        <h5>Service fee: $20.00</h5>
-                        <h5>Cleaning fee: $20.00</h5>
-                        <h3>Total: $240.00</h3>
+                        <h5>Rent: ${days*qty*price}</h5>
+                        <h5>Service fee: ${days*20}</h5>
+                        <h5>Cleaning fee: ${days*20}</h5>
+                        <h3>Total: ${days*qty*price+days*20*2}</h3>
 
                         <button type="button" className="btn">Confirm and Pay</button>
                     </div>
