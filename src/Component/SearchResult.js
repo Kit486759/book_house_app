@@ -26,7 +26,7 @@ export default function SearchResult(props) {
             url: 'https://hotels4.p.rapidapi.com/locations/search',
             params: { query: searchKey },
             headers: {
-                'x-rapidapi-key': '8481c109b1msh426eeb6ad66b625p1feda9jsnbd3ea58a310a',
+                'x-rapidapi-key': process.env.REACT_APP_API_KEY,
                 'x-rapidapi-host': 'hotels4.p.rapidapi.com'
             }
         };
